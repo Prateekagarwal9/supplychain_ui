@@ -1,0 +1,156 @@
+﻿{
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "SubscriptionID": {
+      "value": ""
+    },
+    "TenantID": {
+      "value": ""
+    },
+    "ClientID": {
+      "value": ""
+    },
+    "CientSecret": {
+      "value": ""
+    },
+    "DataFactoryName": {
+      "value": ""
+    },
+    "DataFactoryLocation": {
+      "value": ""
+    },
+    "StorageAccountName": {
+      "value": ""
+    },
+    "StorageAccessKey": {
+      "value": ""
+    },
+    "StorageConnectionString": {
+      "value": ""
+    },
+    "SQLServerName": {
+      "value": ""
+    },
+    "SQLUsername": {
+      "value": ""
+    },
+    "SQLPassword": {
+      "value": ""
+    },
+    "SQLConnectionString": {
+      "value": ""
+    },
+    "AzureFunctionURL": {
+      "value": ""
+    },
+    "Sources": {
+      "value": ""
+    },
+    "BQproject": {
+      "value": ""
+    },
+    "BQCliendID": {
+      "value": ""
+    },
+    "BQClientSecret": {
+      "value": ""
+    },
+    "BQToken": {
+      "value": ""
+    },
+    "BQTableSchema": {
+      "value": ""
+    },
+    "BQtables": {
+      "value": ""
+    },
+    "OracleServerName": {
+      "value": ""
+    },
+    "OraclePort": {
+      "value": ""
+    },
+    "OracleSID": {
+      "value": ""
+    },
+    "OracleUser": {
+      "value": ""
+    },
+    "OraclePassword": {
+      "value": ""
+    },
+    "OracleSchema": {
+      "value": ""
+    },
+    "OracleTables": {
+      "value": ""
+    },
+    "SalesForceUsername": {
+      "value": ""
+    },
+    "SalesForcePassword": {
+      "value": ""
+    },
+    "SalesForceToken": {
+      "value": ""
+    },
+"SalesForceSchema": {
+      "value": ""
+    },
+    "SalesForceTables": {
+      "value": ""
+    },
+    "SAPServer": {
+      "value": ""
+    },
+    "SAPUserName": {
+      "value": ""
+    },
+    "SAPPassword": {
+      "value": ""
+    },
+    "SAPSchema": {
+      "value": ""
+    },
+    "SAPTables": {
+      "value": ""
+    },
+    "DatabricksName": {
+      "value": ""
+    },
+    "DataBricksWorkspaceURL": {
+      "value": ""
+    },
+    "DataBricksToken": {
+      "value": ""
+    },
+    "PowerBIEmbeddedName": {
+      "value": ""
+    },
+    "PowerBIEmbeddedAdmin": {
+      "value": ""
+    },
+    "AppServiceName": {
+      "value": ""
+    },
+    "AppServiceURL": {
+      "value": ""
+    },
+    "AzureFunctionURL": {
+      "value": ""
+    },
+    "KeyVaultName": {
+      "value": ""
+    },
+    "KeyVaultLocation": {
+      "value": ""
+    },
+    "ResourceName": {
+      "value": ""
+    },
+    "ResourceLocation": {
+      "value": ""
+    }
+  }
+}

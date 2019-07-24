@@ -1,0 +1,880 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- These meta tags come first. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+     <link rel='stylesheet' href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"/>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+
+    <title>Azure Smart Enterprise</title>
+
+    <!-- Include the CSS -->
+    <link href="../static/v4/docs/assets/css/toolkit-light.css" rel="stylesheet">
+
+
+<link href="../static/v4/docs/assets/css/application.css" rel="stylesheet">
+
+  </head>
+  <body style="background-color:#ffffff; ">
+    <!--  <div class="loader"></div> -->
+    <div id="loader"></div>
+
+    <div id="contents">
+
+    <nav class="iconav">
+  <a class="iconav-brand" href="loggedinpage.php" style="padding:0;background: transparent ;margin:0; margin-top:5px;">
+    <img src="../static/celebal.png" width="69" length="69" style="padding-bottom: 10px;"></img>
+  </a>
+  <div class="iconav-slider">
+    <ul class="nav nav-pills iconav-nav flex-md-column">
+
+      <li class="nav-item ">
+        <a class="nav-link active" href="loggedinpage.php" title="Overview" data-toggle="" data-placement="right" data-container="body">
+          <span class="icon icon-home" style="color:beige;"></span>
+          <small class="iconav-nav-label hidden-md-up">Overview</small>
+        </a>
+      </li>
+
+    </ul>
+  </div>
+</nav>
+<div class="container">
+   <div class="docs-header" id="content">
+  <div class="dashhead">
+    <div class="dashhead-titles">
+
+
+    </div>
+
+   </div>
+ </div>
+   <div id="error"></div>
+
+        <form method="post" id="user_form">
+
+          <h4> User Details  <span class="icon icon-flash"></span></h4>
+
+             <div id="botm-text" class=".btm" style="font-size:13px;
+  margin-top:20px; "><i class="fa fa-info-circle" aria-hidden="true"></i> Add user details.</div>
+  <hr>
+
+          <div id = "error"></div>
+
+
+        <div class="form-row">
+           <div class="form-group col-md-3 col-sm-4">
+
+            <div class="srvc">
+
+             <label for="inputEmail4">Customer Name</label>
+
+               <div class="info-txt" id="customername-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the customer name.</div>
+
+             <input type="text" autocomplete = "off" class="form-control" id="customername" name="name" required  placeholder="Enter your Name" onfocusin="showHelp('customername-help')" onfocusout="hideHelp('customername-help')">
+           </div>
+         </div>
+
+         <div class="form-group col-md-4 col-sm-4">
+
+             <label for="inputEmail4">Generate Unique ID</label>
+             <br><br>
+             <div class="row">
+            <div class="col-md-6">
+              <input type="text" autocomplete = "off" class="form-control" id="genkey" name="genkey" required  placeholder="Generated Key" />
+            </div>
+            <div class="col-md-4">
+             <input type="button" class="btn btn-primary" value="Generate ID" id="gnrtkey" onclick="Random();"></input>
+           </div>
+           </div>
+         </div>
+
+
+
+       </div>
+       <hr>
+
+
+
+          <h4> App Service Details  <span class="icon icon-flash"></span></h4>
+
+          <div id="botm-text" class=".btm" style="font-size:13px;
+  margin-top:20px; "><i class="fa fa-info-circle" aria-hidden="true"></i> Add details regarding the App services here.</div>
+
+          <div id = "error"></div>
+
+        <hr class="my-4">
+        <div class="form-row">
+           <div class="form-group col-md-4">
+
+            <div class="srvc">
+
+             <label for="inputEmail4">App Service Name</label>
+
+             <div class="info-txt" id="appservicename-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the service name of the app.</div>
+
+             <input type="text" autocomplete = "off" class="form-control" id="appservicename" name="name" required  placeholder="App Service Name" onfocusin="showHelp('appservicename-help')" onfocusout="hideHelp('appservicename-help')">
+           </div>
+           </div>
+           <div class="form-group col-md-4">
+             <label for="inputEmail4">App Service URL</label>
+              <div class="info-txt" id="appurl-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the url of the app.</div>
+             <input type="text" class="form-control" id="appurl" name="name" required  placeholder="App Service URL" onfocusin="showHelp('appurl-help')" onfocusout="hideHelp('appurl-help')">
+           </div>
+
+         </div>
+         <hr>
+         <br>
+
+          <h4> Data Factory Details  <span class="icon icon-flash"></span></h4>
+          <div id="botm-text" style=" font-size:13px;
+  margin-top:20px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Add details regarding Data Factory.</div>
+        <hr class="my-4">
+              <div class="form-row">
+                 <div class="form-group col-md-4">
+
+                   <label for="inputEmail4">Data Factory Name</label>
+
+                    <div id="inner" style="padding-bottom:5px;">
+
+                    <div class="info-txt" id="datafactoryname-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Data Factory Name.</div>
+
+                   <input type="text" class="form-control" id="datafactoryname" name="name" required  placeholder="Data Factory Name" onfocusin="showHelp('datafactoryname-help')" onfocusout="hideHelp('datafactoryname-help')">
+
+                    </div>
+
+                 </div>
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4" style="padding-bottom:20px;">Data Factory Location</label>
+                 <select class="custom-select" id="dflocation">
+                   <option selected>Open this select menu</option>
+                   <option value="eastus">East-US</option>
+                   <option value="westus">West-US</option>
+                   <option value="Central US">Central-US</option>
+                 </select>
+
+               </div>
+             </div>
+             <div class="form-row">
+
+             <div class="form-group col-md-4">
+                   <label for="inputEmail4" style="padding-bottom:20px;">Data Factory sources</label>
+                 <select class="custom-select" id="dftypes">
+                   <option selected>Open this select menu</option>
+                   <option value="BQ">BQ</option>
+                   <option value="Oracle">Oracle</option>
+                   <option value="SAP">SAP</option>
+                   <option value="SalesForce">SalesForce</option>
+                 </select>
+
+               </div>
+           </div>
+
+            <br><br>
+
+            <div class="hidden-div" id="BQ" style="display:none;">
+               <h4>BQ Details</h4>
+                  <hr class="my-4">
+                 <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">BQ Project</label>
+
+                      <div class="info-txt" id="bqproject-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter BQ Project details.</div>
+                   <input type="text" class="form-control" id="bqproject" name="email"  required placeholder="Enter BQ Project" onfocusin="showHelp('bqproject-help')" onfocusout="hideHelp('bqproject-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">BQ Client ID</label>
+
+                      <div class="info-txt" id="bqclient-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter BQ Client ID .</div>
+                   <input type="text" class="form-control" id="bqclient" name="email"  required placeholder="BQ Client ID" onfocusin="showHelp('bqclient-help')" onfocusout="hideHelp('bqclient-help')">
+                 </div>
+               </div>
+
+               <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">BQ Client Secret</label>
+
+                      <div class="info-txt" id="bqsecret-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter BQ secret details.</div>
+                   <input type="text" class="form-control" id="bqsecret" name="email"  required placeholder="Enter BQ secret details." onfocusin="showHelp('bqsecret-help')" onfocusout="hideHelp('bqsecret-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">BQ Token</label>
+
+                      <div class="info-txt" id="bqtoken-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter BQ Token value .</div>
+                   <input type="text" class="form-control" id="bqtoken" name="email"  required placeholder="BQ Token value." onfocusin="showHelp('bqtoken-help')" onfocusout="hideHelp('bqtoken-help')">
+                 </div>
+               </div>
+
+
+
+               <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">BQ Table Schema</label>
+
+                      <div class="info-txt" id="bqschema-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter BQ
+table schema.</div>
+                   <input type="text" class="form-control" id="bqschema" name="email"  required placeholder="Enter BQ table schema." onfocusin="showHelp('bqschema-help')" onfocusout="hideHelp('bqschema-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">BQ Tables</label>
+
+                      <div class="info-txt" id="bqtables-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter BQ Tables .</div>
+                   <input type="text" class="form-control" id="bqtables" name="email"  required placeholder="BQ Table values." onfocusin="showHelp('bqtables-help')" onfocusout="hideHelp('bqtables-help')">
+                 </div>
+               </div>
+
+             </div>
+
+
+
+
+
+
+ <div class="hidden-div" id="Oracle" style="display:none;">
+               <h4>Oracle details</h4>
+                  <hr class="my-4">
+                 <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">Oracle Server Name</label>
+
+                      <div class="info-txt" id="oracleserver-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Oracle server name.</div>
+                   <input type="text" class="form-control" id="oracleserver" name="email"  required placeholder="Oracle server name" onfocusin="showHelp('oracleserver-help')" onfocusout="hideHelp('oracleserver-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">Oracle Port</label>
+
+                      <div class="info-txt" id="oracleport-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Oracle Port value .</div>
+                   <input type="text" class="form-control" id="oracleport" name="email"  required placeholder="Oracle Port value." onfocusin="showHelp('oracleport-help')" onfocusout="hideHelp('oracleport-help')">
+                 </div>
+               </div>
+
+               <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">Oracle SID</label>
+
+                      <div class="info-txt" id="oraclesid-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Oracle SID.</div>
+                   <input type="text" class="form-control" id="oraclesid" name="email"  required placeholder="Enter the oracle SID." onfocusin="showHelp('oraclesid-help')" onfocusout="hideHelp('oraclesid-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">Oracle User</label>
+
+                      <div class="info-txt" id="oracleuser-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Oracle user value .</div>
+                   <input type="text" class="form-control" id="oracleuser" name="email"  required placeholder="Oracle user value" onfocusin="showHelp('oracleuser-help')" onfocusout="hideHelp('oracleuser-help')">
+                 </div>
+               </div>
+
+
+
+               <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">Oracle Password</label>
+
+                      <div class="info-txt" id="oraclepassword-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Oracle password value.</div>
+                   <input type="text" class="form-control" id="oraclepassword" name="email"  required placeholder="Enter oracle password." onfocusin="showHelp('oraclepassword-help')" onfocusout="hideHelp('oraclepassword-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">Oracle Schema</label>
+
+                      <div class="info-txt" id="oracleschema-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Oracle Schema .</div>
+                   <input type="text" class="form-control" id="oracleschema" name="email"  required placeholder="Oracle Schema." onfocusin="showHelp('oracleschema-help')" onfocusout="hideHelp('oracleschema-help')">
+                 </div>
+               </div>
+
+
+               <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">Oracle Tables</label>
+
+                      <div class="info-txt" id="oracletable-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Oracle Table.</div>
+                   <input type="text" class="form-control" id="oracletable" name="email"  required placeholder="Enter oracle table." onfocusin="showHelp('oracletable-help')" onfocusout="hideHelp('oracletable-help')">
+                 </div>
+               </div>
+             </div>
+
+
+    <div class="hidden-div" id="SAP" style="display:none;">
+               <h4>SAP details</h4>
+                  <hr class="my-4">
+                 <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SAP Server</label>
+
+                      <div class="info-txt" id="sapserver-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter SAP server detail.</div>
+                   <input type="text" class="form-control" id="sapserver" name="email"  required placeholder="SAP server details." onfocusin="showHelp('sapserver-help')" onfocusout="hideHelp('sapserver-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SAP UserName</label>
+
+                      <div class="info-txt" id="sapusername-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter SAP username .</div>
+                   <input type="text" class="form-control" id="sapusername" name="email"  required placeholder="Enter SAP username" onfocusin="showHelp('sapusername-help')" onfocusout="hideHelp('sapusername-help')">
+                 </div>
+               </div>
+
+               <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SAP Password</label>
+
+                      <div class="info-txt" id="sappassword-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter SAP Password.</div>
+                   <input type="password" class="form-control" id="sappassword" name="email"  required placeholder="Enter the SAP password." onfocusin="showHelp('sappassword-help')" onfocusout="hideHelp('sappassword-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SAP Schema</label>
+
+                      <div class="info-txt" id="sapschema-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter SAP schema .</div>
+                   <input type="text" class="form-control" id="sapschema" name="email"  required placeholder="Enter SAP schema" onfocusin="showHelp('sapschema-help')" onfocusout="hideHelp('sapschema-help')">
+                 </div>
+               </div>
+
+               <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SAP Tables</label>
+
+                      <div class="info-txt" id="saptable-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter SAP table.</div>
+                   <input type="text" class="form-control" id="saptable" name="email"  required placeholder="Enter SAP Tables." onfocusin="showHelp('saptable-help')" onfocusout="hideHelp('saptable-help')">
+                 </div>
+
+               </div>
+
+
+
+             </div>
+
+ <div class="hidden-div" id="SalesForce" style="display:none;">
+               <h4>SalesForce details</h4>
+                  <hr class="my-4">
+                 <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SalesForce Username</label>
+
+                      <div class="info-txt" id="salesforceuser-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter SalesForce username.</div>
+                   <input type="text" class="form-control" id="salesforceuser" name="email"  required placeholder="SalesForce username." onfocusin="showHelp('salesforceuser-help')" onfocusout="hideHelp('salesforceuser-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SalesForce Password</label>
+
+                      <div class="info-txt" id="salesforcepass-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Salesforce Password .</div>
+                   <input type="password" class="form-control" id="salesforcepass" name="email"  required placeholder="Enter Salesforce password" onfocusin="showHelp('salesforcepass-help')" onfocusout="hideHelp('salesforcepass-help')">
+                 </div>
+               </div>
+
+               <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SalesForce Token</label>
+
+                      <div class="info-txt" id="salesforcetoken-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter SalesForce Token.</div>
+                   <input type="password" class="form-control" id="salesforcetoken" name="email"  required placeholder="Enter SalesForce Token." onfocusin="showHelp('salesforcetoken-help')" onfocusout="hideHelp('salesforcetoken-help')">
+                 </div>
+
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SalesForce Schema</label>
+
+                      <div class="info-txt" id="salesforceschema-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter SalesForce Schema.</div>
+                   <input type="text" class="form-control" id="salesforceschema" name="email"  required placeholder="Enter SalesForce schema." onfocusin="showHelp('salesforceschema-help')" onfocusout="hideHelp('salesforceschema-help')">
+                 </div>
+               </div>
+
+
+               <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">SalesForce Tables</label>
+
+                      <div class="info-txt" id="salesforcetables-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter SalesForce Table.</div>
+                   <input type="text" class="form-control" id="salesforcetables" name="email"  required placeholder="Enter SalesForce Table." onfocusin="showHelp('salesforcetables-help')" onfocusout="hideHelp('salesforcetables-help')">
+                 </div>
+               </div>
+             </div>
+                 <hr>
+                   <h4> Storage Account Details  <span class="icon icon-flash"></span></h4>
+
+          <div id="botm-text" style=" font-size:13px;
+  margin-top:20px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Add details regarding storage account.</div>
+             <hr class="my-4">
+                 <div class="form-row">
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">Storage Account Name</label>
+
+                      <div class="info-txt" id="accountname-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter Storage Account Name.</div>
+                   <input type="text" class="form-control" id="accountname" name="email"  required placeholder="Storage Account Name" onfocusin="showHelp('accountname-help')" onfocusout="hideHelp('accountname-help')">
+                 </div>
+                 <div class="form-group col-md-4">
+                   <label for="inputEmail4">Access Key</label>
+
+                   <div class="info-txt" id="accesskey-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the Access Key.</div>
+
+                   <input type="text" class="form-control" id="accesskey" name="email"  required placeholder="Access Key" onfocusin="showHelp('accesskey-help')" onfocusout="hideHelp('accesskey-help')">
+                 </div>
+                </div>
+                 <div class="form-row">
+                   <div class="form-group col-md-4">
+                     <label for="inputEmail4">Storage Account Connection String</label>
+
+                     <div class="info-txt" id="connectstring-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the connection string.</div>
+
+                     <input type="text" class="form-control" id="connectstring" name="email"  required placeholder="Connection String" onfocusin="showHelp('connectstring-help')" onfocusout="hideHelp('connectstring-help')">
+                   </div>
+                   </div>
+                <br>
+                <hr class="my-4">
+                <h4> SQL Server Details  <span class="icon icon-flash"></span></h4>
+
+          <div id="botm-text" style=" font-size:13px;
+  margin-top:20px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Add the details of your SQL Server.</div>
+                <hr class="my-4">
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                 <label for="inputEmail4">SQL Server Name</label>
+
+                 <div class="info-txt" id="servername-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the name of the server.</div>
+
+                 <input type="text" class="form-control" required id="servername" name="email" placeholder="SQL server name" onfocusin="showHelp('servername-help')" onfocusout="hideHelp('servername-help')">
+                </div>
+                <div class="form-group col-md-4">
+                 <label for="inputPassword4">Username</label>
+
+                 <div class="info-txt" id="sqlusername-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the username of the server.</div>
+                 <input type="text" class="form-control" id="sqlusername" name ="cpassword" required placeholder="Username" onfocusin="showHelp('sqlusername-help')" onfocusout="hideHelp('sqlusername-help')">
+
+                </div>
+
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                 <label for="inputEmail4">Password</label>
+
+                 <div class="info-txt" id="sqlpass-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the password.</div>
+
+                 <input type="password" class="form-control" required id="sqlpass" name="password"   placeholder="Password" onfocusin="showHelp('sqlpass-help')" onfocusout="hideHelp('sqlpass-help')">
+
+                </div>
+                <div class="form-group col-md-4">
+                 <label for="inputPassword4">Database Name</label>
+
+                   <div class="info-txt" id="dbname-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the database Name.</div>
+                 <input type="text" class="form-control" id="dbname" name ="cpassword" required placeholder="Database Name" onfocusin="showHelp('dbname-help')" onfocusout="hideHelp('dbname-help')">
+
+                </div>
+
+                </div>
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                 <label for="inputEmail4">SQL Server Connection String</label>
+
+                 <div class="info-txt" id="sqlcon-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the connection string.</div>
+
+                 <input type="text" class="form-control" required id="sqlcon" name="password"   placeholder="Connection String" onfocusin="showHelp('sqlcon-help')" onfocusout="hideHelp('sqlcon-help')">
+                </div>
+
+
+                </div>
+                <br>
+                <hr class="my-4">
+                <h4>Databricks Details <span class="icon icon-flash"></span></h4>
+
+          <div id="botm-text" style=" font-size:13px;
+  margin-top:20px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Add the details of Databricks.</div>
+              <hr>
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                 <label for="inputEmail4">Databricks Name</label>
+
+                  <div class="info-txt" id="databricksname-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the databricks Name.</div>
+                 <input type="text" class="form-control" required id="databricksname" name="password"   placeholder="Databricks Name" onfocusin="showHelp('databricksname-help')" onfocusout="hideHelp('databricksname-help')">
+                </div>
+                <div class="form-group col-md-4">
+                 <label for="inputEmail4">Access Token</label>
+
+                 <div class="info-txt" id="accesstoken-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the value of Access Token.</div>
+                 <input type="text" class="form-control" required id="accesstoken" name="password"   placeholder="Access Token" onfocusin="showHelp('accesstoken-help')" onfocusout="hideHelp('accesstoken-help')">
+                </div>
+
+                </div>
+                <div class="form-row">
+                  <div class="form-group col-md-4">
+                   <label for="inputEmail4">Workspace URL</label>
+
+                    <div class="info-txt" id="workspaceurl-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the value of Workspace URL.</div>
+
+                   <input type="text" class="form-control" required id="workspaceurl" name="password"   placeholder="Workspace URL" onfocusin="showHelp('workspaceurl-help')" onfocusout="hideHelp('workspaceurl-help')">
+                  </div>
+                </div>
+
+              <br>
+              <hr>
+              <h4>Power BI Details <span class="icon icon-flash"></span></h4>
+
+          <div id="botm-text" style=" font-size:13px;
+  margin-top:20px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Add the following Power BI details.</div>
+            <hr>
+                <div class="form-row">
+                <div class="form-group col-md-4">
+                 <label for="inputEmail4">Power BI Embedded</label>
+
+                   <div class="info-txt" id="powerbiname-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the value Power BI embeded.</div>
+                 <input type="text" class="form-control" required id="powerbiname" name="password"   placeholder="Power BI Embedded" onfocusin="showHelp('powerbiname-help')" onfocusout="hideHelp('powerbiname-help')">
+                </div>
+
+
+                <div class="form-group col-md-4">
+                 <label for="inputEmail4">Power BI Admin</label>
+
+                  <div class="info-txt" id="powerbiadmin-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the value for Power BI Admin.</div>
+
+                 <input type="text" class="form-control" required id="powerbiadmin" name="password"   placeholder="Power BI Admin" onfocusin="showHelp('powerbiadmin-help')" onfocusout="hideHelp('powerbiadmin-help')">
+                </div>
+              </div>
+
+
+              <br>
+              <hr>
+              <h4>Key Vault Details <span class="icon icon-flash"></span></h4>
+
+          <div id="botm-text" style=" font-size:13px;
+  margin-top:20px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Add the details for your Key Vault.</div>
+            <hr>
+            <div class="form-row">
+            <div class="form-group col-md-4">
+             <label for="inputEmail4">Key vault Name</label>
+
+             <div class="info-txt" id="keyvaultname-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the name of key vault.</div>
+
+             <input type="text" class="form-control" required id="keyvaultname" name="password"   placeholder="Key Vault name" onfocusin="showHelp('keyvaultname-help')" onfocusout="hideHelp('keyvaultname-help')">
+            </div>
+            <div class="form-group col-md-4">
+             <label for="inputEmail4" style="padding-bottom:20px;">Key vault Location</label>
+             <select class="custom-select" id="keyvaultlocation">
+               <option selected>Open this select menu</option>
+               <option value="eastus">East-US</option>
+               <option value="westus">West-US</option>
+               <option value="Central US">Central-US</option>
+             </select>
+            </div>
+
+          </div>
+          <br>
+          <hr>
+          <h4>Subsciption Details <span class="icon icon-flash"></span></h4>
+
+          <div id="botm-text" style=" font-size:13px;
+  margin-top:20px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Add up your subscription details.</div>
+        <hr>
+        <div class="form-row">
+        <div class="form-group col-md-4">
+         <label for="inputEmail4">Subscription ID</label>
+
+         <div class="info-txt" id="subid-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the subscription ID.</div>
+         <input type="text" class="form-control" required id="subid" name="password"placeholder="Subsciption Id"  onfocusin="showHelp('subid-help')" onfocusout="hideHelp('subid-help')">
+        </div>
+        <div class="form-group col-md-4">
+         <label for="inputEmail4">Tenant ID</label>
+
+         <div class="info-txt" id="tenid-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the Tenent ID.</div>
+
+         <input type="text" class="form-control" required id="tenid" name="password"   placeholder="Tenant Id" onfocusin="showHelp('tenid-help')" onfocusout="hideHelp('tenid-help')">
+        </div>
+      </div>
+      <div class="form-row">
+      <div class="form-group col-md-4">
+       <label for="inputEmail4">Client Id</label>
+
+        <div class="info-txt" id="clientid-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the Client ID.</div>
+
+       <input type="text" class="form-control" required id="clientid" name="password"   placeholder="Client Id" onfocusin="showHelp('clientid-help')" onfocusout="hideHelp('clientid-help')">
+      </div>
+      <div class="form-group col-md-4">
+       <label for="inputEmail4">Client Secret</label>
+
+       <div class="info-txt" id="clientsecret-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;" ><i class="fa fa-info-circle"></i> Enter the Client Secret.</div>
+
+       <input type="text" class="form-control" required id="clientsecret" name="password"   placeholder="Client Secret" onfocusin="showHelp('clientsecret-help')" onfocusout="hideHelp('clientsecret-help')" >
+      </div>
+      </div>
+      <div class="form-row">
+      <div class="form-group col-md-4">
+       <label for="inputEmail4">Resource Group</label>
+
+        <div class="info-txt" id="resourcegroup-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;"><i class="fa fa-info-circle"></i> Enter the Resonance Group.</div>
+
+       <input type="text" class="form-control" required id="resourcegroup" name="password"   placeholder="Resource Group" onfocusin="showHelp('resourcegroup-help')" onfocusout="hideHelp('resourcegroup-help')" >
+      </div>
+      <div class="form-group col-md-4">
+       <label for="inputEmail4" style="padding-bottom:20px;">Resource Group Location</label>
+       <select class="custom-select" id="rglocation">
+         <option selected>Open this select menu</option>
+         <option value="eastus">East-US</option>
+         <option value="westus">West-US</option>
+         <option value="Central US">Central-US</option>
+       </select>
+      </div>
+      </div>
+      <hr>
+      <h4>Azure Function Details <span class="icon icon-flash"></span></h4>
+
+          <div id="botm-text" style=" font-size:13px;
+  margin-top:20px;"><i class="fa fa-info-circle" aria-hidden="true"></i> Add details for azure function.</div>
+    <hr>
+    <div class="form-row">
+    <div class="form-group col-md-4">
+     <label for="inputEmail4">Azure Function URL</label>
+
+     <div class="info-txt" id="azurefunction-help" style="font-size:11px;
+  margin-top:2px;margin-bottom:3px;visibility:hidden;"><i class="fa fa-info-circle"></i> Enter the URL function.</div>
+
+     <input type="text" class="form-control" required id="azurefunction" name="password"  placeholder="Azure Function URL" onfocusin="showHelp('azurefunction-help')" onfocusout="hideHelp('azurefunction-help')">
+   </div>
+    </div>
+
+       <div class="form-row ">
+       <div class="form-group col-md-4">
+       </br>
+         <button type="button" id="add" class="btn btn-primary"name="submit" onclick="callCurrentTemp()" >Submit <span class="icon icon-share-alternative"></span></button>
+
+
+       </div>
+
+      </div>
+
+
+
+        </form>
+    </div>
+  </div>
+</div>
+</div>
+  </body>
+ <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+ <!-- Include jQuery (required) and the JS -->
+ <script src="../static/v4/docs/assets/js/chart.js"></script>
+ <script src="../static/v4/docs/assets/js/tablesorter.min.js"></script>
+ <script src="../static/v4/docs/assets/js/tether.min.js"></script>
+ <script src="../static/v4/docs/assets/js/chart.js"></script>
+ <script src="../static/v4/docs/assets/js/toolkit.js"></script>
+ <script src="../static/v4/docs/assets/js/application.js"></script>
+<script>
+  // execute/clear BS loaders for docs
+  $(function(){while(window.BS&&window.BS.loader&&window.BS.loader.length){(window.BS.loader.pop())()}})
+</script>
+
+<script>
+
+
+var callCurrentTemp = function() {
+  var customername = document.getElementById("customername").value
+  var generatedkey = document.getElementById("gnrtkey").value
+  var appservicename = document.getElementById("appservicename").value
+  var appurl = document.getElementById("appurl").value
+  var datafactoryname = document.getElementById("datafactoryname").value
+  var accountname = document.getElementById("accountname").value
+  var accesskey = document.getElementById("accesskey").value
+  var connectstring = document.getElementById("connectstring").value
+  var servername = document.getElementById("servername").value
+  var sqlusername = document.getElementById("sqlusername").value
+  var sqlpass = document.getElementById("sqlpass").value
+  var dbname = document.getElementById("dbname").value
+  var databricksname = document.getElementById("databricksname").value
+  var accesstoken = document.getElementById("accesstoken").value
+  var workspaceurl = document.getElementById("workspaceurl").value
+  var powerbiname = document.getElementById("powerbiname").value
+  var powerbiadmin = document.getElementById("powerbiadmin").value
+  var keyvaultname = document.getElementById("keyvaultname").value
+  var subid = document.getElementById("subid").value
+  var tenid = document.getElementById("tenid").value
+  var clientid = document.getElementById("clientid").value
+  var clientsecret = document.getElementById("clientsecret").value
+  clientsecret=encodeURIComponent(clientsecret)
+  var resourcegroup = document.getElementById("resourcegroup").value
+  var sqlcon = document.getElementById("sqlcon").value
+  var dflocation = document.getElementById("dflocation").value
+  var azurefunction = document.getElementById("azurefunction").value
+  var keyvaultlocation = document.getElementById("keyvaultlocation").value
+  var rglocation = document.getElementById("rglocation").value
+  var sources = document.getElementById("dftypes").value
+  var bqproject = document.getElementById("bqproject").value
+  var bqclient = document.getElementById("bqclient").value
+  var bqsecret = document.getElementById("bqsecret").value
+  var bqtoken = document.getElementById("bqtoken").value
+  var bqschema = document.getElementById("bqschema").value
+  var bqtables = document.getElementById("bqtables").value
+  var oracleport = document.getElementById("oracleport").value
+  var oraclesid = document.getElementById("oraclesid").value
+  var oracleuser = document.getElementById("oracleuser").value
+  var oraclepassword = document.getElementById("oraclepassword").value
+  var oracleschema = document.getElementById("oracleschema").value
+  var oracletable = document.getElementById("oracletable").value
+  var sapserver = document.getElementById("sapserver").value
+  var sapusername = document.getElementById("sapusername").value
+  var sappassword = document.getElementById("sapschema").value
+  var sapschema = document.getElementById("sapschema").value
+  var saptable = document.getElementById("saptable").value
+var salesforceuser = document.getElementById("salesforceuser").value
+var salesforcepass = document.getElementById("salesforcepass").value
+var salesforcetoken = document.getElementById("salesforcetoken").value
+var salesforceschema = document.getElementById("salesforceschema").value
+var salesforcetables = document.getElementById("salesforcetables").value
+
+  //added...
+  // var dfsource = document.getElementById("dftypes").value
+  console.log(salesforceuser)
+  console.log(sources)
+    console.log(customername)
+   console.log(dflocation)
+   console.log(appservicename)
+   console.log(appurl)
+   console.log(datafactoryname)
+   console.log(accountname)
+   accesskey=encodeURIComponent(accesskey)
+  console.log(accesskey)
+   console.log(connectstring)
+   console.log(servername)
+   console.log(sqlusername)
+   console.log(sqlpass)
+   console.log(dbname)
+   console.log(databricksname)
+   console.log(accesstoken)
+   console.log(workspaceurl)
+   console.log(powerbiname)
+   console.log(powerbiadmin)
+   console.log(keyvaultname)
+   console.log(subid)
+   console.log(tenid)
+   console.log(clientid)
+   console.log(clientsecret)
+   console.log(resourcegroup)
+   console.log(keyvaultlocation)
+   console.log(rglocation)
+  // $('#loader').css('visibility','visible')
+  $.ajax({
+    url: 'http://127.0.0.1:5000/testpy?appservicename='+appservicename+'&appurl='+appurl+'&datafactoryname='+datafactoryname+'&accountname='+accountname+'&accesskey='+accesskey+'&connectstring='+connectstring+'&servername='+servername+'&sqlusername='+sqlusername+'&sqlpass='+sqlpass+'&dbname='+dbname+'&databricksname='+databricksname+'&accesstoken='+accesstoken+'&workspaceurl='+workspaceurl+'&powerbiname='+powerbiname+'&powerbiadmin='+powerbiadmin+'&keyvaultname='+keyvaultname+'&subid='+subid+'&tenid='+tenid+'&clientid='+clientid+'&clientsecret='+clientsecret+'&resourcegroup='+resourcegroup+'&sqlcon='+sqlcon+'&dflocation='+dflocation+'&azurefunction='+azurefunction+'&keyvaultlocation='+keyvaultlocation+'&rglocation='+rglocation+'&sources='+sources+'&bqproject='+bqproject+'&bqsecret='+bqsecret+'&bqtoken='+bqtoken+'&bqschema='+bqschema+'&bqtables='+bqtables+'&oracleport='+oracleport+'&oraclesid='+oraclesid+'&oracleuser='+oracleuser+'&oraclepassword='+'&oracleschema='+oracleschema+'&oracletable='+oracletable+'&sapserver='+sapserver+'&sapusername='+sapusername+'&sappassword='+sappassword+'&sapschema='+sapschema+'&saptable='+saptable+'&salesforceuser='+salesforceuser+'&salesforcepass='+salesforcepass+'&salesforcetoken='+salesforcetoken+'&salesforceschema='+salesforceschema+'&salesforcetables='+salesforcetables,
+    method: "GET",
+    success: function(data) {
+      console.log(data);
+      alert("Everything was Deployed")
+    },
+    error: function(data){
+      ("Failed to send the request");
+    }
+
+  });
+
+
+};
+
+
+$('input').attr('autocomplete','off');
+
+$("#appservicename").focusin(function() {
+    $("#servicename").show();
+}).focusout(function () {
+    $("#servicename").hide();
+});
+
+function showHelp(id) {
+  jqid = '#' + id;
+  $(jqid).css("visibility","visible");
+}
+
+function hideHelp(id) {
+  jqid = '#' + id;
+  $(jqid).css("visibility","hidden");
+}
+
+
+function Random() {
+        var rnd = Math.floor(Math.random() * 1000000000);
+        document.getElementById('genkey').value = rnd;
+    }
+
+
+
+
+$(function() {
+        $('#dftypes').change(function(){
+            $('.hidden-div').hide();
+            $('#' + $(this).val()).show();
+        });
+    });
+
+
+$(document).ready(function() {
+    $("#add").click(function(e) {
+        e.preventDefault();
+        // alert("Submitting Details...");
+        $("#loader").css("visibility","hidden");
+        $("#contents").css("visibility","visible");
+    });
+});
+
+document.onreadystatechange = function () {
+  var state = document.readyState
+  if (state == 'interactive') {
+       document.getElementById('contents').style.visibility="hidden";
+  } else if (state == 'complete') {
+      setTimeout(function(){
+         document.getElementById('interactive');
+         document.getElementById('loader').style.visibility="hidden";
+         document.getElementById('contents').style.visibility="visible";
+      },1000);
+  }
+}
+</script>
+
+</html>
